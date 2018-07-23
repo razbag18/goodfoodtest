@@ -1,0 +1,37 @@
+<h1> <%= @dish['name'] %> </h1> 
+<img src="<%= @dish['image_url'] %>" >
+
+<%# prints dish name and the dish image from database %>
+<%# deleting dish based on its id in the database %>
+<form action="/dishes/<%= @dish['id']%>" method="post">
+<%# delete doesnt  %>
+<input type="hidden" name="_method" value="delete">
+  <button>delete</button>
+</form>
+
+<a href="/dishes/<%= @dish['id'] %>/edit">
+  <button>Edit</button>
+</a>
+
+<p> <%=@dish.likes.count %> likes</p>
+  <form action="/likes" method="post">
+  <input type="hidden" name="dish_id" value= "<%= @dish.id %>">
+    <button>Like</button>
+  </form>
+
+<form action="/comments" method="post">
+<input type= "hidden" name="dish_id" value="<%= @dish['id'] %>">
+  <label for="">comment</label>
+  <textarea name="content"></textarea>
+  <button>post</button>
+</form>
+
+<p>Posted by <%= @dish.user.id %>:</p>
+
+<% @comments.each do |comment| %> 
+  <p><%= comment['content'] %></p>
+<% end %>
+
+<a href="/">
+  <button>Back</button>
+</a>

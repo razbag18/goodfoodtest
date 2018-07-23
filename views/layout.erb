@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GoodFoodHunting</title>
+  <link rel='stylesheet' href='/stylesheets/main.css'>
+</head>
+<body>
+
+<%# if valid user, then login %>
+<%# <% if User.find_by(id: session[:user_id]) %>
+<% if logged_in? %>
+  Logged in as: <%= current_user.email %>
+
+  <%# creating ability to log out %>
+  <form action="/session" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>logout</button>
+  </form>
+
+  <% end  %>
+  <%= yield %>
+  
+
+</body>
+</html>

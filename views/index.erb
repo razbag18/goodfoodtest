@@ -1,0 +1,15 @@
+<h1>goodfoodhunting</h1>
+
+
+<a href="/dishes/new">Post New Dish</a>
+
+<% @dishes.each do |dish| %>
+<%# going through each dishes in my database, printing name in a link directing to the new page /dishes %>
+<p>
+  <a href="/dishes/<%= dish.id %>"> 
+    <%= dish.name %>
+  </a> 
+</p>
+<% end %>
+
+<%# running through each dish in my database and printing dish name onto homepage %>
